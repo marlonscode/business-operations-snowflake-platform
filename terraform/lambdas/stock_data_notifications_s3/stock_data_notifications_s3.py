@@ -18,4 +18,7 @@ def handler(event, context):
         
         print(f"Saved {record['messageId']} to s3://{BUCKET_NAME}/{key}")
     
-    return {"status": "ok"}
+    return {
+        "statusCode": 200,
+        "body": json.dumps({":message": "Notification/s sent to S3"})
+    }
