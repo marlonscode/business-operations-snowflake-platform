@@ -31,8 +31,6 @@ def handler(event, context):
             "data": sentiment_data
         }
 
-        print(message)
-
         # 2. Publish to SNS
         sns_client.publish(
             TopicArn=SNS_TOPIC_ARN,
@@ -40,12 +38,14 @@ def handler(event, context):
         )
 
         # 3. Push to S3
+        feed_items = sentiment_data.get("feed", [])
+        jsonl_body = "\n".join(json.dumps(item) for item in feed_items)
         timestamp = datetime.utcnow().strftime("%Y-%m-%dT%H-%M-%SZ")
         s3_key = f"sentiment/sentiment_{timestamp}.json"
         s3_client.put_object(
             Bucket=S3_BUCKET_NAME,
             Key=s3_key,
-            Body=json.dumps(sentiment_data),
+            Body=jsonl_body,
             ContentType="application/json"
         )
         print(f"Data successfully written to s3://{S3_BUCKET_NAME}/{s3_key}")
