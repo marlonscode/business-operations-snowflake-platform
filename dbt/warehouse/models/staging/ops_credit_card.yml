@@ -1,0 +1,29 @@
+models:
+  - name: ops_credit_card
+    description: "Staging table for operations credit card data"
+    columns:
+      - name: creditcardid
+        description: "Unique identifier for each credit card"
+        tests:
+          - not_null
+          - unique
+      - name: cardnumber
+        description: "The credit card number"
+        tests:
+          - not_null
+      - name: cardtype
+        description: "The type of credit card (e.g., Visa, MasterCard)"
+        tests:
+          - not_null
+      - name: expmonth
+        description: "The expiration month of the credit card"
+        tests:
+          - not_null
+      - name: expyear
+        description: "The expiration year of the credit card"
+        tests:
+          - not_null
+      - name: modifieddate
+        description: "The date when the credit card record was last modified"
+        tests:
+          - not_null

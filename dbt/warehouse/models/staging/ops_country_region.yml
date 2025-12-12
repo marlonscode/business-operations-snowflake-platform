@@ -1,0 +1,12 @@
+models:
+  - name: ops_country_region
+    description: "Staging table for operations country and region data"
+    columns:
+      - name: country_region_code
+        description: "Unique code for each country or region"
+      - name: name
+        description: "Name of the country or region"
+        tests:
+          - not_null
+      - name: modified_date
+        description: "The date when the country or region record was last modified"

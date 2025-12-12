@@ -1,0 +1,24 @@
+models:
+  - name: ops_salesorderdetail
+    description: "Staging table for operations sales order detail data"
+    columns:
+      - name: modifieddate
+        description: "The date when the sales order detail record was last modified"
+        tests:
+          - not_null
+      - name: orderqty
+        description: "Quantity ordered of the product"
+      - name: productid
+        description: "Unique identifier for the product"
+      - name: rowguid
+        description: "Unique identifier for the sales order detail row"
+      - name: salesorderdetailid
+        description: "Unique identifier for the sales order detail"
+      - name: salesorderid
+        description: "Unique identifier for the sales order"
+      - name: specialofferid
+        description: "Unique identifier for the special offer applied"
+      - name: unitprice
+        description: "Unit price of the product"
+      - name: unitpricediscount
+        description: "Discount applied to the unit price"

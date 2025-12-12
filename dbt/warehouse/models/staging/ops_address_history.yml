@@ -1,0 +1,20 @@
+models:
+  - name: ops_address_history
+    description: "Staging table for operations address history data"
+    columns:
+      - name: address_id
+        description: "Unique identifier for each address"
+      - name: address_line1
+        description: "First line of the address"
+      - name: address_line2
+        description: "Second line of the address"
+      - name: city
+        description: "City of the address"
+      - name: state_province
+        description: "State or province of the address"
+      - name: postal_code
+        description: "Postal code of the address"
+      - name: country_region
+        description: "Country or region of the address"
+      - name: modified_date
+        description: "The date when the address record was last modified"

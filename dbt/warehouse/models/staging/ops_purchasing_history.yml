@@ -1,0 +1,18 @@
+models:
+  - name: ops_purchasing_history
+    description: "Staging table for operations purchasing history data"
+    columns:
+      - name: purchasinghistoryid
+        description: "Unique identifier for each purchasing history record"
+      - name: productid
+        description: "Identifier for the product associated with the purchasing history"
+      - name: vendorid
+        description: "Identifier for the vendor associated with the purchasing history"
+      - name: startdate
+        description: "The date when the purchasing history record starts"
+      - name: enddate
+        description: "The date when the purchasing history record ends"
+      - name: modifieddate
+        description: "The date when the purchasing history record was last modified"
+        tests:
+          - not_null

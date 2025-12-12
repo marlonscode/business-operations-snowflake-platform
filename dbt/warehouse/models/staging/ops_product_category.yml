@@ -1,0 +1,17 @@
+models:
+  - name: ops_product_category
+    description: "Staging table for operations product category data"
+    columns:
+      - name: productcategoryid
+        description: "Unique identifier for each product category"
+        tests:
+          - not_null
+          - unique
+      - name: name
+        description: "Name of the product category"
+        tests:
+          - not_null
+      - name: modifieddate
+        description: "The date when the product category record was last modified"
+        tests:
+          - not_null

@@ -1,0 +1,30 @@
+models:
+  - name: ops_salesorderheader_history
+    description: "Staging table for operations sales order header history data"
+    columns:
+      - name: salesorderid
+        description: "Unique identifier for each sales order"
+        tests:
+          - not_null
+      - name: revisionnumber
+        description: "Revision number of the sales order"
+        tests:
+          - not_null
+      - name: orderdate
+        description: "The date when the order was placed"
+        tests:
+          - not_null
+      - name: duedate
+        description: "The date when the order is due"
+        tests:
+          - not_null
+      - name: shipdate
+        description: "The date when the order was shipped"
+      - name: status
+        description: "Status of the sales order"
+        tests:
+          - not_null
+      - name: modifieddate
+        description: "The date when the sales order record was last modified"
+        tests:
+          - not_null

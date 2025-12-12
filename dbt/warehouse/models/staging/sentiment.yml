@@ -1,0 +1,10 @@
+models:
+  - name: sentiment
+    description: "Staging table for sentiment analysis data"
+    columns:
+      - name: id
+        description: "Unique identifier for each sentiment record"
+      - name: text
+        description: "The text content analyzed for sentiment"
+      - name: sentiment_score
+        description: "Numerical score representing the sentiment"

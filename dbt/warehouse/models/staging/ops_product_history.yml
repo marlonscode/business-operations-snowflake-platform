@@ -1,0 +1,16 @@
+models:
+  - name: ops_product_history
+    description: "Staging table for operations product history data"
+    columns:
+      - name: productid
+        description: "Unique identifier for each product"
+        tests:
+          - not_null
+      - name: startdate
+        description: "The date when the product history record starts"
+      - name: enddate
+        description: "The date when the product history record ends"
+      - name: modifieddate
+        description: "The date when the product history record was last modified"
+        tests:
+          - not_null

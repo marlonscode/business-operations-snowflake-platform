@@ -1,0 +1,30 @@
+{{
+    config(
+        materialized="table"
+    )
+}}
+
+select
+    class,
+    color,
+    daystomanufacture,
+    finishedgoodsflag,
+    listprice,
+    makeflag,
+    modifieddate,
+    name,
+    productid,
+    productline,
+    productmodelid,
+    productnumber,
+    productsubcategoryid,
+    reorderpoint,
+    rowguid,
+    safetystocklevel,
+    sellstartdate,
+    standardcost,
+    valid_from,
+    valid_to,
+    weight,
+    weightunitmeasurecode
+from {{ source('bike_business', 'ops_product_history') }}

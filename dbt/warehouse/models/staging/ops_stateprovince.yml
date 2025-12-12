@@ -1,0 +1,33 @@
+models:
+  - name: ops_stateprovince
+    description: "Staging table for operations state and province data"
+    columns:
+      - name: stateprovinceid
+        description: "Unique identifier for each state or province"
+        tests:
+          - not_null
+          - unique
+      - name: stateprovincecode
+        description: "Code representing the state or province"
+        tests:
+          - not_null
+      - name: countryregioncode
+        description: "Code representing the country or region"
+        tests:
+          - not_null
+      - name: name
+        description: "Name of the state or province"
+        tests:
+          - not_null
+      - name: territoryid
+        description: "Identifier for the associated sales territory"
+        tests:
+          - not_null
+      - name: isonlystateprovinceflag
+        description: "Flag indicating if this is the only state or province in the country"
+        tests:
+          - not_null
+      - name: modifieddate
+        description: "The date when the state or province record was last modified"
+        tests:
+          - not_null

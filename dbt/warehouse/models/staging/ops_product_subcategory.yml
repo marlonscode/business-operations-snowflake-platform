@@ -1,0 +1,21 @@
+models:
+  - name: ops_product_subcategory
+    description: "Staging table for operations product subcategory data"
+    columns:
+      - name: productsubcategoryid
+        description: "Unique identifier for each product subcategory"
+        tests:
+          - not_null
+          - unique
+      - name: productcategoryid
+        description: "Identifier for the product category to which this subcategory belongs"
+        tests:
+          - not_null
+      - name: name
+        description: "Name of the product subcategory"
+        tests:
+          - not_null
+      - name: modifieddate
+        description: "The date when the product subcategory record was last modified"
+        tests:
+          - not_null

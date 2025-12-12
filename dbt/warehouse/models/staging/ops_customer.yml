@@ -1,0 +1,15 @@
+models:
+  - name: ops_customer
+    description: "Staging table for operations customer data"
+    columns:
+      - name: customerid
+        description: "Unique identifier for each customer"
+        tests:
+          - not_null
+          - unique
+      - name: personid
+        description: "Identifier linking to the person associated with the customer"
+      - name: storeid
+        description: "Identifier linking to the store associated with the customer"
+      - name: territoryid
+        description: "Identifier linking to the sales territory associated with the customer"

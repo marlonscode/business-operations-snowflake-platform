@@ -1,0 +1,19 @@
+models:
+  - name: ops_store
+    description: "Staging table for operations store data"
+    columns:
+      - name: businessentityid
+        description: "Unique identifier for each business entity"
+        tests:
+          - not_null
+          - unique
+      - name: modifieddate
+        description: "The date when the store record was last modified"
+        tests:
+          - not_null
+      - name: salespersonid
+        description: "Identifier for the salesperson associated with the store"
+      - name: storename
+        description: "Name of the store"
+        tests:
+          - not_null

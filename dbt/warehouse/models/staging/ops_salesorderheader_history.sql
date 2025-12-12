@@ -1,0 +1,33 @@
+{{
+    config(
+        materialized="table"
+    )
+}}
+
+select
+    accountnumber,
+    billtoaddressid,
+    comment,
+    creditcardapprovalcode,
+    creditcardid,
+    currencyrateid,
+    customerid,
+    duedate,
+    freight,
+    modifieddate,
+    onlineorderflag,
+    orderdate,
+    purchaseordernumber,
+    revisionnumber,
+    rowguid,
+    salesorderid,
+    salespersonid,
+    shipdate,
+    shipmethodid,
+    shiptoaddressid,
+    status,
+    subtotal,
+    taxamt,
+    territoryid,
+    totaldue
+from {{ source('bike_business', 'ops_salesorderheader_history') }}

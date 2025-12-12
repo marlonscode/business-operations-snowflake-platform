@@ -1,0 +1,20 @@
+models:
+  - name: ops_person
+    description: "Staging table for operations person data"
+    columns:
+      - name: personid
+        description: "Unique identifier for each person"
+      - name: firstname
+        description: "First name of the person"
+        tests:
+          - not_null
+      - name: lastname
+        description: "Last name of the person"
+        tests:
+          - not_null
+      - name: middlename
+        description: "Middle name of the person"
+      - name: modifieddate
+        description: "The date when the person record was last modified"
+        tests:
+          - not_null

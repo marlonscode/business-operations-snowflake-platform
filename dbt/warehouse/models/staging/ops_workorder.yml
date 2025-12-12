@@ -1,0 +1,33 @@
+models:
+  - name: ops_workorder
+    description: "Staging table for operations work order data"
+    columns:
+      - name: workorderid
+        description: "Unique identifier for each work order"
+        tests:
+          - not_null
+          - unique
+      - name: startdate
+        description: "The date when the work order starts"
+        tests:
+          - not_null
+      - name: enddate
+        description: "The date when the work order ends"
+      - name: duedate
+        description: "The date when the work order is due"
+      - name: orderqty
+        description: "Quantity ordered for the work order"
+        tests:
+          - not_null
+      - name: productid
+        description: "Identifier for the product associated with the work order"
+        tests:
+          - not_null
+      - name: scrappedqty
+        description: "Quantity scrapped during the work order process"
+      - name: scrapreasonid
+        description: "Identifier for the reason of scrapping, if applicable"
+      - name: modifieddate
+        description: "The date when the work order record was last modified"
+        tests:
+          - not_null

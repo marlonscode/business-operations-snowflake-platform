@@ -1,0 +1,21 @@
+models:
+  - name: ops_salesreason
+    description: "Staging table for operations sales reason data"
+    columns:
+      - name: salesreasonid
+        description: "Unique identifier for each sales reason"
+        tests:
+          - not_null
+          - unique
+      - name: name
+        description: "Name of the sales reason"
+        tests:
+          - not_null
+      - name: reasontype
+        description: "Type of the sales reason"
+        tests:
+          - not_null
+      - name: modifieddate
+        description: "The date when the sales reason record was last modified"
+        tests:
+          - not_null
