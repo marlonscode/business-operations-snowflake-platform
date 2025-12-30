@@ -26,7 +26,21 @@ override.tf.json
 *secrets.tfvars
 *secrets.tfvars.json
 
-# Ignore lambda zip files
+# Ignore lambda zip file/s
 *.zip
 
 dbt.log
+
+.user.yml
+
+.tmp*
+
+__pycache__
+
+*.egg-info/
+
+.env
+
+.vscode/
+
+.DS_Store

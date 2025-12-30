@@ -5,12 +5,12 @@
 }}
 
 select
-    countryregioncode,
-    isonlystateprovinceflag,
-    modifieddate,
-    name,
-    rowguid,
-    stateprovincecode,
     stateprovinceid,
-    territoryid
+    countryregioncode,
+    modifieddate,
+    rowguid,
+    name,
+    territoryid,
+    isonlystateprovinceflag,
+    stateprovincecode
 from {{ source('bike_business', 'ops_stateprovince') }}

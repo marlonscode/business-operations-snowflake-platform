@@ -5,8 +5,8 @@
 }}
 
 select
-    modifieddate,
+    salesreasonid,
     name,
     reasontype,
-    salesreasonid
+    modifieddate
 from {{ source('bike_business', 'ops_salesreason') }}

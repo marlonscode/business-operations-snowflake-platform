@@ -1,0 +1,29 @@
+models:
+  - name: fact_manufacture_order
+    description: "A fact table containing manufacture order details."
+    columns:
+      - name: manufacture_order_key
+        description: "Surrogate key for the manufacture order."
+        tests:
+          - unique
+          - not_null
+      - name: product_key
+        description: "Foreign key to the product dimension."
+        tests:
+          - not_null
+      - name: scrapreasonid
+        description: "Identifier for the scrap reason."
+      - name: order_quantity
+        description: "The quantity ordered in the manufacture order."
+        tests:
+          - not_null
+      - name: order_recieved_date
+        description: "The date the manufacture order was received."
+        tests:
+          - not_null
+      - name: enddate
+        description: "The end date of the manufacture order."
+      - name: duedate
+        description: "The due date of the manufacture order."
+      - name: modifieddate
+        description: "The last modified date of the manufacture order."

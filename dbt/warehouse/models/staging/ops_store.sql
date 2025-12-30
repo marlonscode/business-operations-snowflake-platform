@@ -6,7 +6,7 @@
 
 select
     businessentityid,
-    modifieddate,
+    storename,
     salespersonid,
-    storename
+    modifieddate
 from {{ source('bike_business', 'ops_store') }}

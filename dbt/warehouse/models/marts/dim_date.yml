@@ -1,0 +1,8 @@
+models:
+  - name: dim_date
+    columns:
+      - name: date_day
+        description: The natural key of the date table
+        tests:
+          - not_null
+          - unique

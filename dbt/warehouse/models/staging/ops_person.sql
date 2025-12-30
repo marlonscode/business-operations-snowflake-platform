@@ -6,14 +6,13 @@
 
 select
     businessentityid,
-    emailpromotion,
+    title,
     firstname,
-    lastname,
     middlename,
-    modifieddate,
+    lastname,
     namestyle,
-    persontype,
-    rowguid,
     suffix,
-    title
+    rowguid,
+    emailpromotion,
+    modifieddate
 from {{ source('bike_business', 'ops_person') }}

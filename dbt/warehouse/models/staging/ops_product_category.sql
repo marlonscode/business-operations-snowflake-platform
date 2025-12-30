@@ -6,6 +6,6 @@
 
 select
     productcategoryid,
-    modifieddate,
-    name
+    name,
+    modifieddate
 from {{ source('bike_business', 'ops_product_category') }}

@@ -1,0 +1,25 @@
+models:
+  - name: dim_address
+    description: "A dimension table containing address details."
+    columns:
+      - name: address_key
+        description: "Surrogate key for the address."
+        tests:
+          - unique
+          - not_null
+      - name: address_id
+        description: "Identifier for the address."
+        tests:
+          - not_null
+      - name: street_address
+        description: "The street address."
+        tests:
+          - not_null
+      - name: city
+        description: "The city of the address."
+      - name: state_province
+        description: "The state or province of the address."
+      - name: postal_code
+        description: "The postal code of the address."
+      - name: country_region
+        description: "The country or region of the address."

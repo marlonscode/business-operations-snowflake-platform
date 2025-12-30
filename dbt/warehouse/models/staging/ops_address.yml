@@ -1,5 +1,5 @@
 models:
-  - name: ops_address_history
+  - name: ops_address
     description: "Staging table for operations address history data"
     columns:
       - name: address_id

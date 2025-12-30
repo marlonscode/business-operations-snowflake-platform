@@ -5,13 +5,13 @@
 }}
 
 select
-    modifieddate,
-    orderqty,
-    productid,
-    rowguid,
-    salesorderdetailid,
-    salesorderid,
-    specialofferid,
-    unitprice,
-    unitpricediscount
+        salesorderdetailid,
+        salesorderid,
+        productid,
+        orderqty,
+        unitprice,
+        specialofferid,
+        unitpricediscount,
+        rowguid,
+        modifieddate
 from {{ source('bike_business', 'ops_salesorderdetail') }}

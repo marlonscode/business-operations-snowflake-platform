@@ -2,18 +2,35 @@ models:
   - name: ops_person
     description: "Staging table for operations person data"
     columns:
-      - name: personid
+      - name: businessentityid
         description: "Unique identifier for each person"
+        tests:
+          - not_null
+          - unique
+          - dbt_expectations.expect_column_to_exist
+      - name: title
+        description: "The title of the person (e.g., Mr., Ms., Dr.)"
       - name: firstname
-        description: "First name of the person"
+        description: "The first name of the person"
         tests:
           - not_null
-      - name: lastname
-        description: "Last name of the person"
-        tests:
-          - not_null
+          - dbt_expectations.expect_column_to_exist
       - name: middlename
-        description: "Middle name of the person"
+        description: "The middle name of the person"
+      - name: lastname
+        description: "The last name of the person"
+        tests:
+          - not_null
+      - name: namestyle
+        description: "Indicates whether the name is in Western style (first name followed by last name) or Eastern style (last name followed by first name)"
+      - name: suffix
+        description: "The suffix of the person's name (e.g., Jr., Sr., III)"
+      - name: rowguid
+        description: "A unique identifier for the row"
+        tests:
+          - not_null
+      - name: emailpromotion
+        description: "Indicates whether the person has opted in for email promotions"
       - name: modifieddate
         description: "The date when the person record was last modified"
         tests:

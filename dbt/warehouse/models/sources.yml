@@ -7,7 +7,7 @@ sources:
     tables:
       - name: fx_latest_rate
       - name: sentiment
-      - name: ops_address_history
+      - name: ops_address
       - name: ops_country_region
       - name: ops_credit_card
       - name: ops_customer
@@ -15,10 +15,8 @@ sources:
       - name: ops_product_category
       - name: ops_product_history
       - name: ops_product_subcategory
-      - name: ops_purchasing_history
       - name: ops_salesorderdetail
-      - name: ops_salesorderheadersalesreason
-      - name: ops_salesorderheader_history
+      - name: ops_salesorderheader
       - name: ops_salesreason
       - name: ops_stateprovince
       - name: ops_store

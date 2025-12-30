@@ -1,0 +1,23 @@
+models:
+  - name: dim_credit_card
+    description: "A dimension table containing credit card details."
+    columns:
+      - name: creditcard_key
+        description: "Surrogate key for the credit card."
+        tests:
+          - unique
+          - not_null
+      - name: creditcard_id
+        description: "Identifier for the credit card."
+        tests:
+          - not_null
+      - name: card_number
+        description: "The number of the credit card."
+        tests:
+          - not_null
+      - name: card_type
+        description: "Type of the credit card (e.g., Visa, MasterCard)."
+      - name: exp_month
+        description: "Expiration month of the credit card."
+      - name: exp_year
+        description: "Expiration year of the credit card."

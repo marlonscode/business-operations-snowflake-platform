@@ -1,19 +1,22 @@
 models:
-  - name: ops_salesorderheader_history
+  - name: ops_salesorderheader
     description: "Staging table for operations sales order header history data"
     columns:
       - name: salesorderid
         description: "Unique identifier for each sales order"
         tests:
           - not_null
+          - dbt_expectations.expect_column_to_exist
       - name: revisionnumber
         description: "Revision number of the sales order"
         tests:
           - not_null
+          - dbt_expectations.expect_column_to_exist
       - name: orderdate
         description: "The date when the order was placed"
         tests:
           - not_null
+          - dbt_expectations.expect_column_to_exist
       - name: duedate
         description: "The date when the order is due"
         tests:

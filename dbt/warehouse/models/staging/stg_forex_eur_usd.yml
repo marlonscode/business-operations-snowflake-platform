@@ -1,0 +1,20 @@
+models:
+  - name: stg_forex_eur_usd
+    description: "A staging table containing the latest EUR to USD forex rates."
+    columns:
+      - name: base_currency
+        description: "The base currency code."
+        tests:
+          - not_null
+      - name: quote_currency
+        description: "The quote currency code."
+        tests:
+          - not_null
+      - name: exchange_rate
+        description: "The exchange rate from base to quote currency."
+        tests:
+          - not_null
+      - name: timestamp
+        description: "The timestamp of the forex rate."
+        tests:
+          - not_null

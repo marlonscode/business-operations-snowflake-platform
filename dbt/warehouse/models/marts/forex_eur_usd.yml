@@ -1,0 +1,25 @@
+models:
+  - name: forex_eur_usd
+    description: "A fact table containing foreign exchange rates for EUR to USD."
+    columns:
+      - name: forex_eur_usd_key
+        description: "Surrogate key for the forex EUR to USD record."
+        tests:
+          - unique
+          - not_null
+      - name: base_currency
+        description: "The base currency code (EUR)."
+        tests:
+          - not_null
+      - name: quote_currency
+        description: "The quote currency code (USD)."
+        tests:
+          - not_null
+      - name: exchange_rate
+        description: "The exchange rate from EUR to USD."
+        tests:
+          - not_null
+      - name: timestamp
+        description: "The timestamp of the exchange rate."
+        tests:
+          - not_null

@@ -1,0 +1,21 @@
+models:
+  - name: dim_product
+    description: "A dimension table containing product details."
+    columns:
+      - name: product_key
+        description: "Surrogate key for the product."
+        tests:
+          - unique
+          - not_null
+      - name: product_name
+        description: "Name of the product."
+        tests:
+          - not_null
+      - name: product_category
+        description: "Category to which the product belongs."
+      - name: unit_sale_price
+        description: "The list price of the product."
+        tests:
+          - not_null
+      - name: modified_date
+        description: "The date when the product record was last modified."

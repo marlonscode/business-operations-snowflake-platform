@@ -1,0 +1,28 @@
+models:
+  - name: stg_sentiment
+    description: "A staging table containing sentiment analysis data from news sources."
+    columns:
+      - name: sentiment_label
+        description: "The overall sentiment label (e.g., positive, negative, neutral)."
+        tests:
+          - not_null
+      - name: sentiment_score
+        description: "The overall sentiment score as a numerical value."
+        tests:
+          - not_null
+      - name: news_source
+        description: "The source of the news article."
+        tests:
+          - not_null
+          - string_size_greater_than:
+              min_length: 0
+      - name: news_summary
+        description: "A summary of the news article."
+        tests:
+          - not_null
+          - string_size_greater_than:
+              min_length: 0
+      - name: time_published
+        description: "The timestamp when the news article was published."
+        tests:
+          - not_null

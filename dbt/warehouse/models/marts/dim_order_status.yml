@@ -1,0 +1,13 @@
+models:
+  - name: dim_order_status
+    description: "A dimension table containing order status details."
+    columns:
+      - name: order_status_key
+        description: "Surrogate key for the order status."
+        tests:
+          - unique
+          - not_null
+      - name: order_status
+        description: "The status of the order."
+        tests:
+          - not_null

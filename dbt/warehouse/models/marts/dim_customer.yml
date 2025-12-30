@@ -1,0 +1,13 @@
+models:
+  - name: dim_customer
+    description: "A dimension table containing customer details."
+    columns:
+      - name: customer_key
+        description: "Surrogate key for the customer."
+        tests:
+          - unique
+          - not_null
+      - name: full_name
+        description: "Full name of the customer."
+        tests:
+          - not_null

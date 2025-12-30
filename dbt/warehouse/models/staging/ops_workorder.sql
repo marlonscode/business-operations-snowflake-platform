@@ -5,13 +5,13 @@
 }}
 
 select
-    duedate,
-    enddate,
-    modifieddate,
-    orderqty,
+    workorderid,
     productid,
+    orderqty,
     scrappedqty,
+    startdate::date as startdate,
+    enddate,
+    duedate,
     scrapreasonid,
-    startdate,
-    workorderid
+    modifieddate
 from {{ source('bike_business', 'ops_workorder') }}

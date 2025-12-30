@@ -1,98 +1,168 @@
-# business-operations-snowflake-platform ❄️
+Fact tables
+- SALE: grain @ sales order detail
+dims
+- product_key
+- customer_key
+- order_status_key
+- shipping_address_key
+- credit_card_key
+
+- PRODUCTION WORKORDER: grain @ order
+dims
+- product_key
+
+DONE - Dimensions
+* dim_product
+* dim_customer
+* dim_credit_card
+* dim_address
+* dim_order_status
+* dim_date
 
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Solution Architecture](#solution-architecture)
-- [Techniques used](#techniques-used)
-- [Project Components](#project-components)
-    - [Generation](#generation)
-    - [Ingestion](#ingestion)
-    - [Storage](#storage)
-    - [Transformation](#transformation)
-    - [Serving](#serving)
-- [Screenshots](#screenshots)
 
 
-## Introduction
-This is an end-to-end Snowflake data platform, covering the entire data engineering lifecycle: generation, ingestion, storage, transformation and serving (including a dashboard). The project uses data that represents a bike manufacturer & retailer. The data reflects standard business operations, so its structures and concepts are broadly applicable to almost any industry.
+# F1 Databricks Platform 🏎️💨
 
-Various data modelling techniques were used in order to answer the following business questions:
-..
+Inspired by F1, I built an end-to-end Databricks platform on F1 data. It supports both batch and streaming workloads and covers the entire data engineering lifecycle - from data generation to serving. Two types of data are ingested into the platform:
+
+- Historical data on race results (batch)
+- Real-time data on track weather conditions, via simulated IoT sensors (streaming)
+<br>
+
+## Goal
+
+The goal of this platform is to answer the following business questions:
+
+- What is the performance of the top 5 teams over the last 50 years?
+- Who are the best drivers in history?
+- Which driver/team won the last 10 seasons?
+- Which countries produce the most drivers?
+- What are the live weather conditions at each track?
+<br>
+
+## End Result
+
+The end result is the following dashboard, which answers the business questions exactly
+
+<img src="images/preset1.png" alt="Description" width="700" />
+Figure: Historical F1 analysis
+<br>
+<br>
+
+<img src="images/preset2.png" alt="Description" width="700" />
+Figure: Real-time IoT readings
+<br>
+<br>
 
 
 ## Solution Architecture
 
-<img src="images/architecture.png" alt="Description" width="700" />
-Figure 1: Solution architecture
+<img src="images/concept_diagram.png" alt="Description" width="700" />
+Figure: Simplified architecture
+<br>
+<br>
 
-## Techniques used
+<img src="images/arch_diagram.png" alt="Description" width="700" />
+Figure: Detailed architecture
+<br>
+<br>
 
-ELT/ETL
-- 
-Python
-- 
-SQL/dbt
-- 
-Cloud (AWS, IaC)
-- 
-Data warehousing (Snowflake/Databricks)
-- 
-Data modelling
--
-Orchestration
-- 
-Serving (semantic layer, dashboard)
-- 
-CI/CD
-- 
-Spark
-- 
-Streaming
-- 
 
-Examples
-- Cloud deployment in AWS (ECS, EC2, IAM, RDS, S3 etc)
-- Data Ingestion service (Airbyte)
-- Incremental Extract using Change Data Capture (CDC)
-- Various data transformations (window functions, joins, calculations etc)
-- `dbt` used for data modelling/transformation
-- Kimball/Dimensional modelling (Star Schema)
-- One Big Table for BI Consumption
-- Data quality tests
-- Semantic modelling (metrics, calculated columns)
-- Data visualisation (Preset dashboard)
+## Features
 
-## Project Components
+| **Feature** | **Details** |
+|-----|--------|
+| **ELT & Streaming Pipelines** | • Airbyte pipelines extract and load data from multiple sources<br>• Supports batch and streaming workloads<br>• Extraction patterns: incremental, full<br>• Load patterns: upsert, append, overwrite<br>• Kafka buffers IoT streaming data<br>• Pipelines orchestrated with Dagster on a schedule |
+| **Cloud & Infrastructure** | • Deployed on AWS using Terraform<br>• Services: Lambda, ECS, ECR, EC2, S3, RDS, SQS, SNS, EventBridge, IAM |
+| **Data Modeling & Warehousing** | • Kimball & OBT modeling with medallion architecture (raw → staging → marts)<br>• 3 fact tables, 6 dimension tables, 2 OBT tables<br>• SCD2 tables track historical changes<br>• Partitioning applied to improve query performance<br>• Delta tables provide ACID compliance and time travel |
+| **Analytics Engineering** | • SQL transformations using dbt<br>• SQL techniques: joins, aggregations, window functions, calculations, CTEs<br>• dbt features: macros, generic/custom tests, snapshots, profiles/targets, packages, incremental models<br>• SparkSQL used to process dbt transformations on Databricks clusters |
+| **Python & Orchestration** | • 6 Lambda functions written in Python<br>• Unit testing with pytest<br>• Orchestration handled via Dagster<br>• Dagster code written in Python |
+| **CI/CD & Git** | • GitHub Actions for CI/CD<br>• Pipelines include linting, testing, Docker container builds, and deployments<br>• Branch protection rules enforce PR-based workflow |
+| **Dashboarding & Semantic Layer** | • Preset dashboard to answer business questions<br>• Semantic layer techniques: calculated metrics and columns |
+<br>
 
-Generation 
-- There was a single data source for this project: The DVD Rental dataset, hosted in nn Amazon RDS PostgreSQL instance. 
-- This dataset contained 15 tables, modelled in 3NF.
-- The dataset represented the various entities of a typical store e.g. `customer`, `order`, `address` etc
-Ingestion 
-- Airbyte was the data integration tool used in this project, being hosted on an Amazon EC2 instance
-- The data source was RDS, and the destination was Snowflake
-- The Extract/Load pattern used was incremental CDC (Change Data Capture)
-Storage 
-- Snowflake was used as the data warehouse in this project
-- Airbyte inserted data into Snowflake with CDC timestamp columns
-Transformation 
-- `dbt` was used to transform data within Snowflake
-- `dbt` was hosted on ECS platform, and set to run daily using a Scheduled Task
-- Medallion Architecture (Raw, Staging, Marts) was used for data layers
-- Within marts layer, `dbt` was used to transform the data from 3NF into Star Schema (Kimball/Dimensional modelling)
-- To aid reporting, an OBT model was also created in the marts layer
-Serving
-- A Preset Dashboard was created to answer the business questions above
-- Please see `screenshots` section of this `README` to see the dashboard
+<!--
+- **ELT & Streaming Pipelines**
+  - Airbyte pipelines extract and load data from multiple sources
+  - Supports batch and streaming
+  - Extraction patterns: incremental, full
+  - Load patterns: upsert, append, overwrite
+  - Kafka buffers IoT streaming data
+  - Pipelines orchestrated with Dagster on a schedule
+
+- **Cloud & Infrastructure**
+  - Deployed on AWS using Terraform
+  - Services: Lambda, ECS, ECR, EC2, S3, RDS, SQS, SNS, EventBridge, IAM
+
+- **Data Modeling & Warehousing**
+  - Kimball & OBT modeling with medallion architecture (raw → staging → marts)
+  - 3 fact tables, 6 dimension tables, 2 OBT tables
+  - SCD2 tables track historical changes
+  - Partitioning applied to improve query performance
+  - Delta tables provide ACID compliance and time travel
+
+- **Analytics Engineering**
+  - SQL transformations using dbt
+  - SQL techniques: joins, aggregations, window functions, calculations, CTEs
+  - dbt features: macros, generic/custom tests, snapshots, profiles/targets, packages, incremental models
+  - SparkSQL used to process dbt transformations on Databricks clusters
+
+- **Python & Orchestration**
+  - 6 Lambda functions written in Python
+  - Unit testing with pytest
+  - Orchestration handled via Dagster
+  - Dagster code written in Python
+
+- **CI/CD & Git**
+  - GitHub Actions for CI/CD
+  - CI/CD pipelines include linting, testing, Docker container builds, and deployments
+  - Branch protection rules to enforce PR-based workflow
+
+- **Dashboarding & Semantic Layer**
+  - Preset dashboard to answer business questions
+  - Semantic layer techniques: calculated metrics and columns
+-->
 
 ## Screenshots
 
-<img src="images/dashboard.png" alt="Description" width="700" />
-Figure 2: Preset dashboard for DVD dataset
+<img src="images/dbt.png" alt="Description" width="700" />
+Figure: dbt DAG
+<br>
+<br>
 
-<img src="images/dag.png" alt="Description" width="700" />
-Figure 3: `dbt` DAG for data warehouse
+<img src="images/erds.png" alt="Description" width="700" />
+Figure: Kimball models created using dbt
+<br>
+<br>
 
-<img src="images/erd.png" alt="Description" width="700" />
-Figure 4: Kimball model for DVD dataset
+<img src="images/airbyte.png" alt="Description" width="700" />
+Figure: Airbye connections
+<br>
+<br>
+
+<img src="images/db.png" alt="Description" width="700" />
+Figure: Databricks compute cluster monitoring
+<br>
+<br>
+
+<img src="images/dagster.png" alt="Description" width="700" />
+Figure: Dagster pipeline successful run
+<br>
+<br>
+
+<img src="images/kafka.png" alt="Description" width="700" />
+Figure: Confluent Kafka S3 connector
+<br>
+<br>
+
+<img src="images/gha.png" alt="Description" width="700" />
+Figure: Github Actions workflow runs
+<br>
+<br>
+
+<img src="images/cicd.png" alt="Description" width="700" />
+Figure: CI/CD flow diagram
+<br>
+<br>
+

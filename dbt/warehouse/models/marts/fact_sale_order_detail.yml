@@ -1,0 +1,29 @@
+models:
+  - name: fact_sale_order_detail
+    description: "A fact table containing sales details."
+    columns:
+      - name: sale_order_detail_key
+        description: "Surrogate key for the sale order detail."
+        tests:
+          - unique
+          - not_null
+      - name: product_key
+        description: "Foreign key to the product dimension."
+        tests:
+          - not_null
+      - name: shipping_address_key
+        description: "Foreign key to the address dimension."
+        tests:
+          - not_null
+      - name: order_status_key
+        description: "Foreign key to the order status dimension."
+        tests:
+          - not_null
+      - name: order_quantity
+        description: "The quantity of products sold in the sale."
+        tests:
+          - not_null
+      - name: total_revenue
+        description: "The total amount for the sale."
+        tests:
+          - not_null
