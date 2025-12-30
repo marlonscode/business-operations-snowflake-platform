@@ -1,1 +1,1 @@
-is_project_live = false
+is_project_live = true

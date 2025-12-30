@@ -100,15 +100,15 @@ resource "aws_lambda_function" "sentiment" {
   }
 }
 
-resource "aws_cloudwatch_event_rule" "every_minute" {
-    name = "every-minute"
-    description = "Fires every minute"
-    schedule_expression = "rate(1 minute)"
+resource "aws_cloudwatch_event_rule" "every_day" {
+    name = "every-1-day"
+    description = "Fires every day"
+    schedule_expression = "rate(1 day)"
     state = var.is_project_live ? "ENABLED" : "DISABLED"
 }
 
 resource "aws_cloudwatch_event_target" "sentiment" {
-    rule = aws_cloudwatch_event_rule.every_minute.name
+    rule = aws_cloudwatch_event_rule.every_day.name
     target_id = "sentiment-target"
     arn = aws_lambda_function.sentiment.arn
 }
@@ -118,7 +118,7 @@ resource "aws_lambda_permission" "eventbridge_invoke_sentiment" {
     action = "lambda:InvokeFunction"
     function_name = aws_lambda_function.sentiment.function_name
     principal = "events.amazonaws.com"
-    source_arn = aws_cloudwatch_event_rule.every_minute.arn
+    source_arn = aws_cloudwatch_event_rule.every_day.arn
 }
 
 # Lambda 2: sentiment Data Notifications into S3
