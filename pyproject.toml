@@ -8,10 +8,11 @@ dependencies = [
     "dagster>=1.12,<1.13",
     "dagster-cloud",
     "dagster-airbyte",
-    "dagster-dbt>=0.29.0",
-    "dbt-core",
+    "dagster-dbt==0.28.6",
+    "dbt-core>=1.7,<1.11",
     "dbt-snowflake"
 ]
+
 
 [project.optional-dependencies]
 dev = [
