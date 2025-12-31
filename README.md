@@ -1,4 +1,4 @@
-# Enterprise Analytics Snowflake Platform ❄️ 📈
+# Enterprise Analytics Snowflake Platform ❄️🔮
 
 I wanted to model a real-world enterprise analytics platform, so I built one using Snowflake! The platform represents the operations of a fictional bicycle manufacturing enterprise. Various types of data are ingested into the platform:
 
@@ -50,22 +50,21 @@ Figure: Detailed architecture
 
 | **Feature** | **Details** |
 |-----|--------|
-| **ELT & Streaming Pipelines** | • Airbyte pipelines extract and load data from multiple sources<br>• Supports batch and streaming workloads<br>• Extraction patterns: incremental, full<br>• Load patterns: upsert, append, overwrite<br>• Kafka buffers IoT streaming data<br>• Pipelines orchestrated with Dagster on a schedule |
+| **ELT & Streaming Pipelines** | • Airbyte pipelines extract and load data from APIs, S3, and RDBMS<br>• Extraction patterns: incremental, full<br>• Load patterns: upsert, append, overwrite<br>• Pipelines orchestrated with Dagster on a schedule |
 | **Cloud & Infrastructure** | • Deployed on AWS using Terraform<br>• Services: Lambda, ECS, ECR, EC2, S3, RDS, SQS, SNS, EventBridge, IAM |
-| **Data Modeling & Warehousing** | • Kimball & OBT modeling with medallion architecture (raw → staging → marts)<br>• 3 fact tables, 6 dimension tables, 2 OBT tables<br>• SCD2 tables track historical changes<br>• Partitioning applied to improve query performance<br>• Delta tables provide ACID compliance and time travel |
-| **Analytics Engineering** | • SQL transformations using dbt<br>• SQL techniques: joins, aggregations, window functions, calculations, CTEs<br>• dbt features: macros, generic/custom tests, snapshots, profiles/targets, packages, incremental models<br>• SparkSQL used to process dbt transformations on Databricks clusters |
-| **Python & Orchestration** | • 6 Lambda functions written in Python<br>• Unit testing with pytest<br>• Orchestration handled via Dagster<br>• Dagster code written in Python |
+| **Data Modeling & Warehousing** | • Kimball & OBT modeling with medallion architecture (raw → staging → marts)<br>• 2 fact tables, 6 dimension tables, 2 OBT tables<br>• SCD2 table for historical tracking<br>• Clustering applied on OBT tables to improve dashboard performance |
+| **Analytics Engineering** | • SQL transformations using dbt<br>• SQL techniques: joins, aggregations, window functions, calculations, CTEs<br>• dbt features: macros, generic/custom tests, snapshots, profiles/targets, packages, incremental models |
+| **Python & Orchestration** | • 3 Lambda functions written in Python<br>• Unit testing with pytest<br>• Orchestration handled via Dagster<br>• Dagster code written in Python |
 | **CI/CD & Git** | • GitHub Actions for CI/CD<br>• Pipelines include linting, testing, Docker container builds, and deployments<br>• Branch protection rules enforce PR-based workflow |
-| **Dashboarding & Semantic Layer** | • Preset dashboard to answer business questions<br>• Semantic layer techniques: calculated metrics and columns |
+| **Dashboarding & Semantic Layer** | • Preset dashboard answering key business questions<br>• Semantic layer techniques: calculated metrics and columns |
+
 <br>
 
 <!--
 - **ELT & Streaming Pipelines**
-  - Airbyte pipelines extract and load data from multiple sources
-  - Supports batch and streaming
+  - Airbyte pipelines extract and load data from 3 different: API, S3, and RDBMS
   - Extraction patterns: incremental, full
   - Load patterns: upsert, append, overwrite
-  - Kafka buffers IoT streaming data
   - Pipelines orchestrated with Dagster on a schedule
 
 - **Cloud & Infrastructure**
@@ -74,19 +73,17 @@ Figure: Detailed architecture
 
 - **Data Modeling & Warehousing**
   - Kimball & OBT modeling with medallion architecture (raw → staging → marts)
-  - 3 fact tables, 6 dimension tables, 2 OBT tables
-  - SCD2 tables track historical changes
-  - Partitioning applied to improve query performance
-  - Delta tables provide ACID compliance and time travel
+  - 2 fact tables, 6 dimension tables, 2 OBT tables
+  - SCD2 table
+  - Clustering applied on OBT tables to improve dashboard performance
 
 - **Analytics Engineering**
   - SQL transformations using dbt
   - SQL techniques: joins, aggregations, window functions, calculations, CTEs
   - dbt features: macros, generic/custom tests, snapshots, profiles/targets, packages, incremental models
-  - SparkSQL used to process dbt transformations on Databricks clusters
 
 - **Python & Orchestration**
-  - 6 Lambda functions written in Python
+  - 3 Lambda functions written in Python
   - Unit testing with pytest
   - Orchestration handled via Dagster
   - Dagster code written in Python
@@ -98,7 +95,6 @@ Figure: Detailed architecture
 
 - **Dashboarding & Semantic Layer**
   - Preset dashboard to answer business questions
-  - Semantic layer techniques: calculated metrics and columns
 -->
 
 ## Screenshots
@@ -108,7 +104,7 @@ Figure: dbt DAG
 <br>
 <br>
 
-<img src="images/erds.png" alt="Description" width="700" />
+<img src="images/erd.png" alt="Description" width="700" />
 Figure: Kimball models created using dbt
 <br>
 <br>

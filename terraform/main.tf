@@ -328,10 +328,7 @@ resource "aws_sns_topic_subscription" "sentiment_notifications_slack" {
   protocol  = "sqs"
 }
 
-####################################
-## ECR Repository                 ##
-####################################
-
+# ECR
 resource "aws_ecr_repository" "repository" {
   name                 = "snowflake-platform"
   image_tag_mutability = "MUTABLE"
