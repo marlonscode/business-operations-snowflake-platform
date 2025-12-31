@@ -1,5 +1,5 @@
 locations:
 - code_source:
     package_name: orchestration.definitions
-  location_name: snowflake_orchestration
+  location_name: orchestration
 working_directory: ./
