@@ -1,13 +1,14 @@
 {{
     config(
-        materialized="table"
+        materialized="table",
+        cluster_by=['order_recieved_date']
     )
 }}
 
 select
     {{ dbt_utils.star(from=ref('fact_sale_order_detail'), relation_alias='fact_sale', except=[
         "product_key", "customer_key", "creditcard_key", "shipping_address_key", "order_status_key", "unit_manufacture_cost", "unit_sale_price"]) }},
-    {{ dbt_utils.star(from=ref('dim_product'), relation_alias='dim_product', except=["product_key"]) }},
+    {{ dbt_utils.star(from=ref('dim_product'), relation_alias='dim_product', except=["product_key", "product_valid_from", "product_valid_to"]) }},
     {{ dbt_utils.star(from=ref('dim_customer'), relation_alias='dim_customer', except=["customer_key"]) }},
     {{ dbt_utils.star(from=ref('dim_credit_card'), relation_alias='dim_credit_card', except=["creditcard_key"]) }},
     {{ dbt_utils.star(from=ref('dim_address'), relation_alias='dim_address', except=["address_key"]) }},

@@ -8,7 +8,7 @@ select
     {{ dbt_utils.generate_surrogate_key(['address.addressid']) }} as address_key,
     address.addressid as address_id,
     address.addressline1 as street_address,
-    address.city as city,
+    address.city,
     sp.name as state_province,
     countryregion.name as country
 from {{ ref('ops_address') }} as address

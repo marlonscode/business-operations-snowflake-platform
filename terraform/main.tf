@@ -327,3 +327,13 @@ resource "aws_sns_topic_subscription" "sentiment_notifications_slack" {
   endpoint  = aws_sqs_queue.sentiment_notifications_slack.arn
   protocol  = "sqs"
 }
+
+####################################
+## ECR Repository                 ##
+####################################
+
+resource "aws_ecr_repository" "repository" {
+  name                 = "snowflake-platform"
+  image_tag_mutability = "MUTABLE"
+  force_delete = true
+}

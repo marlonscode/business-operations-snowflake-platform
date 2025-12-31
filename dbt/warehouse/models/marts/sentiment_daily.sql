@@ -21,11 +21,11 @@ select
     {{ dbt_utils.generate_surrogate_key(['date']) }} as sentiment_key,
     date,
     round(avg(sentiment_score), 3) as sentiment_score,
-    case 
+    case
         when avg(sentiment_score) > 0.5 then 'Very Positive'
         when avg(sentiment_score) > 0.1 then 'Positive'
         when avg(sentiment_score) > 0.05 then 'Neutral'
-        else 'Negative' 
+        else 'Negative'
     end as sentiment_label
 from base_table
 group by date

@@ -20,9 +20,28 @@ DONE - Dimensions
 * dim_date
 
 
+Business questions
+- FX
+  - What is the currency exchange rate for our largest market (USA)?
+- Sentiment
+  - How did people feel about our company this past week, based off news headlines?
+- Business
+  - Pie chart - % of inventory in each category 
+  - Global map heatmap - revenue by country over all time
+  - Horizontal bar - revenue by product category over all time
+  - Table - top revenue products over last 30 days
+  - Line - Profit by day over the last 30 days
 
 
-# F1 Databricks Platform 🏎️💨
+
+
+
+# Enterprise Analytics Snowflake Platform ❄️ 📈
+
+- European Bicycle manufacturing company
+- Sells to the US
+- Publicly traded
+- Sentiment score
 
 Inspired by F1, I built an end-to-end Databricks platform on F1 data. It supports both batch and streaming workloads and covers the entire data engineering lifecycle - from data generation to serving. Two types of data are ingested into the platform:
 

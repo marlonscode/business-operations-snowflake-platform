@@ -59,7 +59,7 @@ from salesorderdetail
 inner join salesorderheader
     on salesorderdetail.salesorderid = salesorderheader.salesorderid
 inner join product
-    on product.product_id = salesorderdetail.productid
+    on salesorderdetail.productid = product.product_id
     and salesorderheader.orderdate::timestamp between product.product_valid_from and coalesce(product.product_valid_to, '9999-01-01'::timestamp)
 
 {% if is_incremental() %}

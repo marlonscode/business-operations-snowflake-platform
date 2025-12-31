@@ -25,7 +25,7 @@ select
     startdate as order_recieved_date
 from {{ ref('ops_workorder') }} as manufacture_order
 inner join product
-    on product.product_id = manufacture_order.productid
+    on manufacture_order.productid = product.product_id
     and manufacture_order.startdate::timestamp between product.product_valid_from and coalesce(product.product_valid_to, '9999-01-01'::timestamp)
 
 {% if is_incremental() %}
