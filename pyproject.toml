@@ -10,7 +10,7 @@ dependencies = [
     "dagster-airbyte",
     "dagster-dbt",
     "dbt-core",
-    "dbt-databricks"
+    "dbt-snowflake"
 ]
 
 
