@@ -1,15 +1,13 @@
 from dagster import EnvVar, AutomationCondition, AssetSpec, AssetKey, DailyPartitionsDefinition
 from dagster_airbyte import AirbyteWorkspace, build_airbyte_assets_definitions, DagsterAirbyteTranslator, AirbyteConnectionTableProps
 
-daily_partitions = DailyPartitionsDefinition(start_date="2025-01-01")
-
 class CustomDagsterAirbyteTranslator(DagsterAirbyteTranslator):
     def get_asset_spec(self, props: AirbyteConnectionTableProps) -> AssetSpec:
         default_spec = super().get_asset_spec(props)
         return default_spec.replace_attributes(
             group_name="airbyte_assets",
             key=AssetKey(["bike_business", props.table_name]),
-            automation_condition=AutomationCondition.on_cron(cron_schedule="* * * * *")
+            automation_condition=AutomationCondition.on_cron(cron_schedule="* * * * *"),
         )
 
 connections_list = [
@@ -27,6 +25,8 @@ def get_airbyte_objects():
         client_id=EnvVar("AIRBYTE_CLIENT_ID"),
         client_secret=EnvVar("AIRBYTE_CLIENT_SECRET")
     )
+
+    daily_partitions = DailyPartitionsDefinition(start_date="2025-01-01")
 
     # Load all assets from your Airbyte workspace
     airbyte_assets = build_airbyte_assets_definitions(

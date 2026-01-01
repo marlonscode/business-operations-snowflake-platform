@@ -22,6 +22,7 @@ dbt_manifest_path = (
 class CustomDagsterDbtTranslator(DagsterDbtTranslator):
     def get_automation_condition(self, dbt_resource_props): 
         return AutomationCondition.eager()
+    def get_partition_m
 
 # load manifest to produce asset defintion
 @dbt_assets(manifest=dbt_manifest_path, dagster_dbt_translator=CustomDagsterDbtTranslator())
