@@ -11,11 +11,12 @@ I wanted to model a real-world enterprise analytics platform, so I built one usi
 
 The goal of this platform is to answer the following business questions:
 
-- What is the revenue/profit of the last month?
-- What types of products do we sell the most?
-- Which products have the best profit margin?
-- What is the current exhange rate of our largest market?
+- What is the revenue/profit over the last month?
+- What is the current exhange rate of our largest market (USA)?
 - How do people feel about our company (public sentiment)?
+- Which products have the best profit margin?
+- What types of products do we sell the most?
+- What US states do we get the most revenue from?
 <br>
 
 ## End Result
@@ -23,12 +24,12 @@ The goal of this platform is to answer the following business questions:
 The end result is the following dashboard, which answers these questions
 
 <img src="images/preset1.png" alt="Description" width="700" />
-Figure: Historical F1 analysis
+Figure: Dashboard page 1
 <br>
 <br>
 
 <img src="images/preset2.png" alt="Description" width="700" />
-Figure: Real-time IoT readings
+Figure: Dashboard page 2
 <br>
 <br>
 
